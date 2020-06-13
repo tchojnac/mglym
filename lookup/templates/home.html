@@ -1,0 +1,35 @@
+
+{%extends 'base.html'%}
+
+{% block content %}
+
+
+</br>
+{% if sensor_measures_response %}
+	{{ sensor_measures_response }}
+{% endif %}
+
+
+{% if api %}
+	{% if api == "Error..." %}
+		There was an error, prease try again...
+	{% else %}
+
+		<div class="jumbotron {{ category_color}}">
+		  <h1 class="display-4">{{ api.stIndexLevel.indexLevelName }}</h1>
+		  <p class="lead">Obszar: {{ api.sensor}}</p>
+		  <hr class="my-4">
+
+          <p class="lead">Jakość powietrza: {{ api.indexLevelName }}</p>
+		  <p>{{category_description}}</p>
+
+		</div>
+
+
+
+
+		{% endif %}
+{% endif %}
+
+
+{% endblock %}
