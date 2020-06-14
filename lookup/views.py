@@ -8,10 +8,15 @@ def home(request):
     import requests
 
     if request.method == 'POST':
-        #stationId = request.POST['stationId ']
+        #stationId = request.POST['stationId']
+        stationId = {'Wrocław': 117,
+                    'Warszawa': 550,
+                    'Gdańsk': 729
+                    }
+
 
         api_request = requests.get(
-              'http://api.gios.gov.pl/pjp-api/rest/station/findAll')
+              'http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/')
 
         try:
             api = json.loads(api_request.content)
@@ -45,7 +50,7 @@ def home(request):
     else:
 
         api_request = requests.get(
-            'http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/943')
+            'http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/944')
 
         try:
             api = json.loads(api_request.content)
